@@ -1,7 +1,7 @@
 {
   "name": "hello-world-ci",
   "version": "1.0.0",
-  "description": "Hello World serverless app with tests",
+  "description": "Hello World serverless app with tests and testing too",
   "main": "handler.js",
   "directories": {
     "lib": "lib",
