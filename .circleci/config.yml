@@ -1,4 +1,4 @@
-version: 20.15.1
+version: 2
 
 jobs:
   build:
@@ -6,7 +6,7 @@ jobs:
 
     docker:
       # specify the version you desire here
-      - image: cimg/node:16.14.0  # Updated to a more recent Node.js version
+      - image: cimg/node:20.15.1  # Updated to a more recent Node.js version
 
     steps:
       - checkout
