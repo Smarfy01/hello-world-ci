@@ -36,8 +36,10 @@ jobs:
 
       # deploy app            
       - run:
-          name: Deploy application 
-          command: sudo sls deploy -v
+          name: Deploy application
+          command: |
+            export SERVERLESS_ACCESS_KEY=$SERVERLESS_ACCESS_KEY
+            sls deploy -v
 
       - save_cache:
           paths:
