@@ -38,9 +38,7 @@ jobs:
       - run:
           name: Deploy application
           command: |
-            echo "SERVERLESS_ACCESS_KEY"
-            npx serverless login
-            
+            echo "SERVERLESS_ACCESS_KEY is set to: $SERVERLESS_ACCESS_KEY"
             export SERVERLESS_ACCESS_KEY=$SERVERLESS_ACCESS_KEY
             export AWS_ACCESS_KEY_ID=$AWS_ACCESS_ID
             export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY
