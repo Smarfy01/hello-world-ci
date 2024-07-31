@@ -1,12 +1,12 @@
-version: 2
+version: 2.1
 
 jobs:
   build:
-    working_directory: ~/hello-world-ci
-
     docker:
       # specify the version you desire here
       - image: cimg/node:20.15.1  # Updated to a more recent Node.js version
+
+    working_directory: ~/hello-world-ci
 
     steps:
       - checkout
@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Install Serverless CLI and dependencies
           command: |
-            sudo npm i -g serverless
+            npm install serverless --save-dev
             npm install
 
       # Authenticate with Docker
@@ -29,23 +29,23 @@ jobs:
           name: Docker login
           command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
 
-      # run tests
-      - run: 
+      # Run tests
+      - run:
           name: Run tests with code coverage
           command: npm test --coverage
 
-      # deploy app            
+      # Deploy app
       - run:
           name: Deploy application
           command: |
-            
             echo "SERVERLESS_ACCESS_KEY"
-            serverless login
+            npx serverless login
             
             export SERVERLESS_ACCESS_KEY=$SERVERLESS_ACCESS_KEY
-            export AWS_ACCESS_ID=$AWS_ACCESS_KEY_ID
-            export AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY_ID
-            sudo sls deploy -v
+            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_ID
+            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_KEY
+            
+            npx serverless deploy -v
 
       - save_cache:
           paths:
