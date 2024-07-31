@@ -41,6 +41,7 @@ jobs:
             
             echo "SERVERLESS_ACCESS_KEY"
             serverless login
+            
             export SERVERLESS_ACCESS_KEY=$SERVERLESS_ACCESS_KEY
             export AWS_ACCESS_ID=$AWS_ACCESS_KEY_ID
             export AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY_ID
